@@ -1,0 +1,26 @@
+<input class="row" type="text" name="search" [(ngModel)]="searchText">
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>NAME</th>
+    <th>PHONE</th>
+    <th>CITY</th>
+    <th>ADRESS1</th>
+    <th>ADRESS2</th>
+    <th>POSTAL CODE</th>
+  </tr>
+  <tr *ngFor="let data of dataArray | filter:searchText">
+    <td>{{data.id}}</td>
+    <td>{{data.name}}</td>
+    <td *ngIf="isPhoneNum(data.phone)">NA</td>
+    <td *ngIf="!isPhoneNum(data.phone)">{{data.phone}}</td> 
+    <td>{{data.address.city}}</td>
+    <td>{{data.address.address_line1}}</td>
+    <td>{{data.address.address_line2}}</td>
+    <td>{{data.address.postal_code}}</td>
+  </tr>
+  
+</table>
+
+<button class="add-btn">Add New</button>
